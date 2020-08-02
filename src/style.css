@@ -1,0 +1,58 @@
+* {
+    margin: 0 auto;
+    font-size: 10px;
+}
+
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    background: lightslategray;
+}
+
+.header {
+    width: 80%;
+    margin-bottom: 1vh;
+}
+
+.header_information {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_information-logo {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+}
+
+.header_information-score {
+    margin: 0;
+    height: 100%;
+    text-align: right;
+    line-height: 8rem;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.header_navigation {
+    background: lightcyan;
+    height: 40px;
+    padding: 0;
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: inline;
+}
+
+.navigation-link {
+    padding: 0;
+    width: 16.6%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.6rem;
+}

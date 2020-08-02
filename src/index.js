@@ -3,7 +3,11 @@ import ReactDOM from 'react-dom';
 import { hot } from 'react-hot-loader';
 
 import 'core-js/stable';
-import 'regenerator-runtime/runtime'
+import 'regenerator-runtime/runtime';
+import './style.css';
+
+import Header from './components/header';
+import QuestionBlock from './components/questionBlock';
 
 class App extends React.Component {
     constructor(props) {
@@ -11,24 +15,15 @@ class App extends React.Component {
         this.state = { active: false };
     }
 
-    toggleActive = () => {
-        this.setState(prevState => ({ active: !prevState.active }));
-    }
-
     render() {
-        const { name } = this.props;
-        const { active } = this.state;
-
         return (
-            <div>
-                <button type="button" onClick={this.toggleActive}>
-                    Hello {name}! Press to toggle image
-                </button>
-                <div>{active ? "Lol" : "Kek"}</div>
+            <div className="wrapper">
+                <Header />
+                <QuestionBlock />
             </div>
         );
     }
-}
+} 
 
 const AppWithHot = hot(module)(App);
 
