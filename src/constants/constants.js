@@ -15,7 +15,14 @@ const questionBlockContent = {
     misteryText: "*****",
 }
 
+const audioConstants = {
+    zeroTime: '00:00',
+    iconStart: "play",
+    iconPause: "pause",
+}
+
 export {
     headerContent,
     questionBlockContent,
+    audioConstants
 };

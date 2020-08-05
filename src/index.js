@@ -5,6 +5,7 @@ import { hot } from 'react-hot-loader';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 import './style.css';
+import './css/all.css';
 
 import Header from './components/header';
 import QuestionBlock from './components/questionBlock';
