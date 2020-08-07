@@ -13,6 +13,7 @@ const headerContent = {
 
 const questionBlockContent = {
     misteryText: "*****",
+    defaultImageWay: './src/assets/images/random-bird.jpg',
 }
 
 const audioConstants = {
@@ -21,8 +22,23 @@ const audioConstants = {
     iconPause: "pause",
 }
 
+const nextLvlButton = {
+    name: "Next Level",
+}
+
+const appConstants = {
+    birdsInOneBox: 6,
+}
+
+const birdDescriptionBlock = {
+    defaultText: 'Послушайте плеер.\nВыберите птицу из списка',
+}
+
 export {
     headerContent,
     questionBlockContent,
-    audioConstants
+    audioConstants,
+    nextLvlButton,
+    appConstants,
+    birdDescriptionBlock,
 };
