@@ -12,7 +12,11 @@ import QuestionBlock from './components/questionBlock';
 import ListOfAnswers from './components/listOfAnswers';
 import InformationAboutBird from './components/informationAboutBird';
 
-import {nextLvlButton, appConstants} from './constants/constants';
+import {
+    nextLvlButton,
+    appConstants,
+    headerContent
+} from './constants/constants';
 import winSound from './assets/audio/correct.mp3';
 import loseSound from './assets/audio/fail.mp3';
 
@@ -22,11 +26,13 @@ class App extends React.Component {
 
         this.state = {
             clickOnBird: false,
-            activeBirdIndex: 0,
+            activeBirdIndex: 1,
             score: 0,
             correctAnswer: false,
             birdIndex: 0,
             activeList: 0,
+            finePoint: 0,
+            gameEnd: false,
         };
 
         this.nextLvlButtonClick = this.nextLvlButtonClick.bind(this);
@@ -43,11 +49,34 @@ class App extends React.Component {
         return Math.floor(Math.random() * appConstants.birdsInOneBox);
     }
 
-    nextLvlButtonClick(key) {
+    nextLvlButtonClick() {
+        if (!this.state.correctAnswer) {
+            return;
+        }
+        if (this.state.activeList === headerContent.navigationNames.length - 1) {
+            this.setState(
+                {
+                    gameEnd: true,
+                    activeList: -1,
+                }
+            );
+        }
         this.setState((prevState) => ({
-            score: prevState.score + 1,
-            correctAnswer: true,
+            clickOnBird: false,
+            correctAnswer: false,
+            birdIndex: this.randomBirdIndex(),
+            activeList: prevState.activeList + 1,
+            finePoint: 0,
         }));
+        this.removeListComponentActiveStyles();
+    }
+
+    removeListComponentActiveStyles() {
+        const masOfLinks = document.querySelectorAll('.answers-list_component');
+        masOfLinks.forEach((el) => {
+            el.classList.remove('correct-answer');
+            el.classList.remove('incorrect-answer');
+        });
     }
 
     actionOnListOfAnswers(bird) {
@@ -55,7 +84,34 @@ class App extends React.Component {
             clickOnBird: true,
             activeBirdIndex: bird.value,
         });
-        console.log(bird.value);
+        const status = bird.classList.contains('correct-bird') ? true : false;
+        
+        if (bird.value - 1 === this.state.birdIndex && !this.state.correctAnswer) {
+            bird.classList.add('correct-answer');
+            this.setState((prevState) => ({
+                correctAnswer: true,
+                score: prevState.score + appConstants.hightestScoreForLvl + prevState.finePoint,
+            }));
+            this.audioEffect(status);
+        } else if (bird.value - 1 !== this.state.birdIndex && !this.state.correctAnswer) {
+            bird.classList.add('incorrect-answer');
+            this.setState((prevState) => ({
+                finePoint: prevState.finePoint - 1,
+            }));
+            this.audioEffect(status);
+        }
+    }
+
+    audioEffect(status) {
+        const successAudio = document.querySelector('.correct-sound');
+        const failAudio = document.querySelector('.incorrect-sound');
+        if (status) {
+            successAudio.currentTime = 0;
+            successAudio.play();
+        } else {
+            failAudio.currentTime = 0;
+            failAudio.play();
+        }
     }
 
     render() {

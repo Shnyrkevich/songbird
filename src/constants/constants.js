@@ -28,6 +28,7 @@ const nextLvlButton = {
 
 const appConstants = {
     birdsInOneBox: 6,
+    hightestScoreForLvl: 5,
 }
 
 const birdDescriptionBlock = {

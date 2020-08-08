@@ -11,7 +11,7 @@
 
 .header, .question-block, .game-container {
     width: 80%;
-    margin-bottom: 1vh;
+    margin-bottom: 1.5vh;
 }
 
 .question-block {
@@ -50,7 +50,7 @@
 .header_navigation {
     border-radius: 5px;
     background: lightcyan;
-    min-height: 30px;
+    min-height: 35px;
     padding: 0;
     width: 100%;
     list-style: none;
@@ -59,13 +59,14 @@
 }
 
 .navigation-link {
-    height: 30px;
+    height: 35px;
+    border-radius: 5px;
     display: block;
     padding: 0;
     width: 16.6%;
     min-width: 115px;
     text-align: center;
-    font-size: 1.6rem;
+    font-size: 1.7rem;
 }
 
 .active-link {
@@ -74,8 +75,8 @@
 
 .question-block_image-block {
     margin: 10px;
-    width: 160px;
-    height: 120px;
+    width: 170px;
+    height: 145px;
 }
 
 .random-bird {
@@ -92,7 +93,7 @@
 }
 
 .question-block-bird-name {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 20px;
 }
 
@@ -107,6 +108,7 @@
     justify-content: center;
     align-items: center;
     margin: 5px;
+    margin-left: -6px;
     width: 30px;
     height: 30px;
     border: 2px solid black;
@@ -147,7 +149,6 @@
 .game-container {
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
     padding-bottom: 1vh;
 }
@@ -164,14 +165,17 @@
 .answers-list {
     padding: 0;
     list-style: none;
+    max-height: 240px;
+    border-radius: 10px;
 }
 
 .answers-list_component {
     height: 40px;
     text-align: center;
-    font-size: 1.4rem;
+    font-size: 1.7rem;
     vertical-align: middle;
     border-bottom: 1px solid black;
+    cursor: pointer;
 }
 
 .answers-list_component:last-child {
@@ -180,23 +184,65 @@
 
 .next-lvl-button {
     background-color: darkcyan;
-    height: 30px;
+    height: 35px;
     width: 100%;
     outline: none;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     border: none;
     border-radius: 10px;
+    margin-top: 1.5vh;
 }
 
 .bird-box  {
     min-height: 240px;
+    display: flex;
 }
 
 .bird-box_default-text {
     padding: 10px;
+    margin-left: 0;
     font-size: 1.5rem;
+}
+
+.bird-information {
+    width: 95%;
+    height: 95%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.bird-information_container {
+    min-width: 250px;
+    max-height: 120px;
+    margin-bottom: 5px;
+}
+
+.bird-information_container-name {
+    font-size: 2rem;
+    margin-bottom: 7px;
+}
+
+.bird-information_container-species {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.bird-information_full-description {
+    width: 100%;
+    font-size: 1.5rem;
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+.correct-answer {
+    background-color: green;
+}
+
+.incorrect-answer {
+    background-color: red;
 }

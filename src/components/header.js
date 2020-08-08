@@ -2,7 +2,7 @@ import React from 'react';
 import {headerContent} from '../constants/constants';
 
 export default class Header extends React.Component {
-    componentDidMount() {
+    componentDidUpdate() {
         const masOfLinks = document.querySelectorAll('.navigation-link');
         masOfLinks.forEach((el) => el.classList.remove('active-link'));
         masOfLinks[this.props.activeList].classList.add('active-link');

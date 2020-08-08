@@ -16,6 +16,11 @@ export default class AudioPlayer extends React.Component {
         }
     }
 
+    componentDidUpdate() {
+        const audio = document.querySelector('.audio_question-block');
+        console.log(audio);
+    }
+
     converTime(sec) {
         let minutes = Math.floor(sec / 60);
         let seconds = sec % 60;
@@ -59,11 +64,10 @@ export default class AudioPlayer extends React.Component {
     }
 
     render() {
+        //разобраться с аудио
         return (
             <div className="audio">
-                <audio ref="player" className="audio_question-block">
-                    <source src={this.props.audio}/>
-                </audio>
+                <audio ref="player" className="audio_question-block" src={this.props.audio}></audio>
                 <div className="audio-button" onClick={this.playButtonAction}>
                     <i className={`fas fa-${this.state.iconState}`}></i>
                 </div>
