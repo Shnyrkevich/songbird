@@ -6,7 +6,7 @@
 .wrapper {
     width: 100vw;
     min-height: 100vh;
-    background: lightslategray;
+    background: rgb(255, 255, 255);
 }
 
 .header, .question-block, .game-container {
@@ -15,7 +15,7 @@
 }
 
 .question-block {
-    background-color: darkcyan;
+    background-color: #9999FF;
     border-radius: 5px;
     display: flex;
     flex-wrap: wrap;
@@ -48,19 +48,19 @@
 }
 
 .header_navigation {
-    border-radius: 5px;
-    background: lightcyan;
+    background: inherit;
     min-height: 35px;
     padding: 0;
     width: 100%;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
+    border: 2px solid black;
 }
 
 .navigation-link {
     height: 35px;
-    border-radius: 5px;
+    line-height: 3.5rem;
     display: block;
     padding: 0;
     width: 16.6%;
@@ -70,7 +70,7 @@
 }
 
 .active-link {
-    background-color: lightblue;
+    background-color: #9999FF;
 }
 
 .question-block_image-block {
@@ -88,8 +88,9 @@
 
 .question-block_description {
     margin-left: 10px;
-    width: 60%;
+    width: 80%;
     min-width: 200px;
+    margin-bottom: 10px;
 }
 
 .question-block-bird-name {
@@ -99,7 +100,6 @@
 
 .audio {
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
@@ -108,7 +108,7 @@
     justify-content: center;
     align-items: center;
     margin: 5px;
-    margin-left: -6px;
+    margin-left: 0;
     width: 30px;
     height: 30px;
     border: 2px solid black;
@@ -123,7 +123,7 @@
 .audio-slider {
     margin: 0;
     min-width: 150px;
-    width: 80%;
+    width: 100%;
 }
 
 .audio-slider_liner {
@@ -134,14 +134,17 @@
     position: relative;
 }
 
-.start-time {
+.stat-time, .end-time {
     position: absolute;
+    font-size: 1.5rem;
+}
+
+.stat-time {
     left: 0;
     top: 0;
 }
 
 .end-time {
-    position: absolute;
     right: 0;
     top: 0;
 }
@@ -154,23 +157,23 @@
 }
 
 .answers-list, .bird-box  {
-    background-color: darkcyan;
+    background-color: inherit;
     width: 48%;
     min-width: 300px;
-    border-radius: 10px;
     margin-bottom: 1vh;
     margin-top: 1vh;
+    border: 2px solid black;
 }
 
 .answers-list {
     padding: 0;
     list-style: none;
-    max-height: 240px;
-    border-radius: 10px;
+    max-height: 246px;
 }
 
 .answers-list_component {
     height: 40px;
+    line-height: 4rem;
     text-align: center;
     font-size: 1.7rem;
     vertical-align: middle;
@@ -183,9 +186,9 @@
 }
 
 .next-lvl-button {
-    background-color: darkcyan;
+    background-color: #9999FF;
     height: 35px;
-    width: 100%;
+    width: 99%;
     outline: none;
     cursor: pointer;
     font-size: 2rem;
@@ -193,8 +196,13 @@
     justify-content: center;
     align-items: center;
     border: none;
-    border-radius: 10px;
     margin-top: 1.5vh;
+    border: 2px solid black;
+}
+
+.disactive {
+    opacity: 0.5;
+    background-color: inherit;
 }
 
 .bird-box  {
@@ -240,9 +248,82 @@
 }
 
 .correct-answer {
-    background-color: green;
+    background-color: #00FF99;
 }
 
 .incorrect-answer {
-    background-color: red;
+    background-color: #FF6666;
+}
+
+.game-end-block {
+    width: 80%;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: darkcyan;
+    border-radius: 10px;
+}
+
+.game-end-block_congrat {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.game-end-block_score-information {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.game-end-block_repeat-button {
+    border: none;
+    width: 200px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 20px;
+}
+
+.game-end-block_image-container {
+    width: 300px;
+    height: 200px;
+    margin-bottom: 10px;
+}
+
+.game-end-block_image {
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 1250px) {
+    .question-block_description {
+        width: 60%;
+    }
+}
+
+@media (max-width: 760px) {
+    .question-block_description {
+        width: 90%;
+        margin-left: auto;
+    }
+
+    .question-block-bird-name {
+        margin-bottom: 10px;
+    }
+
+    .bird-information_container-name,
+    .bird-information_container-species,
+    .question-block-bird-name {
+        text-align: center;
+    }
+
+
+    .answers-list, .bird-box {
+        width: 100%;
+    }
 }

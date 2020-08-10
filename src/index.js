@@ -11,6 +11,7 @@ import Header from './components/header';
 import QuestionBlock from './components/questionBlock';
 import ListOfAnswers from './components/listOfAnswers';
 import InformationAboutBird from './components/informationAboutBird';
+import GameEndBlock from './components/gameEndBlock';
 
 import {
     nextLvlButton,
@@ -37,6 +38,7 @@ class App extends React.Component {
 
         this.nextLvlButtonClick = this.nextLvlButtonClick.bind(this);
         this.actionOnListOfAnswers = this.actionOnListOfAnswers.bind(this);
+        this.repeatButtonAction = this.repeatButtonAction.bind(this);
     }
 
     componentDidMount() {
@@ -61,6 +63,7 @@ class App extends React.Component {
                 }
             );
         }
+        console.log('Active', this.state.activeList)
         this.setState((prevState) => ({
             clickOnBird: false,
             correctAnswer: false,
@@ -99,7 +102,14 @@ class App extends React.Component {
                 finePoint: prevState.finePoint - 1,
             }));
             this.audioEffect(status);
-        }
+        } 
+    }
+
+    repeatButtonAction() {
+        this.setState({
+            gameEnd: false,
+            score: 0,
+        });
     }
 
     audioEffect(status) {
@@ -115,34 +125,53 @@ class App extends React.Component {
     }
 
     render() {
-        return (
-            <div className="wrapper">
-                <Header
-                    activeList={this.state.activeList}
-                    counter={this.state.score}
-                />
-                <QuestionBlock 
-                    correctBirdIndex={this.state.birdIndex}
-                    activeList={this.state.activeList}
-                    clickStatus={this.state.correctAnswer}
-                />
-                <div className="game-container">
-                    <ListOfAnswers 
-                        correctBirdIndex={this.state.birdIndex}
-                        activeList={this.state.activeList}
-                        acionOnrListComponent={this.actionOnListOfAnswers}
+        const {gameEnd, activeList, score, birdIndex, correctAnswer, clickOnBird, activeBirdIndex} = this.state;
+        
+        if (!gameEnd) {
+            return (
+                <div className="wrapper">
+                    <Header
+                        activeList={activeList}
+                        counter={score}
                     />
-                    <InformationAboutBird
-                        activeBirdStatus={this.state.clickOnBird}
-                        activeList={this.state.activeList}
-                        birdIndex={this.state.activeBirdIndex}
+                    <QuestionBlock 
+                        correctBirdIndex={birdIndex}
+                        activeList={activeList}
+                        clickStatus={correctAnswer}
                     />
-                    <button className='next-lvl-button' onClick={this.nextLvlButtonClick}>{nextLvlButton.name}</button>
+                    <div className="game-container">
+                        <ListOfAnswers 
+                            correctBirdIndex={birdIndex}
+                            activeList={activeList}
+                            acionOnrListComponent={this.actionOnListOfAnswers}
+                        />
+                        <InformationAboutBird
+                            activeBirdStatus={clickOnBird}
+                            activeList={activeList}
+                            birdIndex={activeBirdIndex}
+                        />
+                        <button
+                            className={!this.state.correctAnswer ? 'next-lvl-button disactive' : 'next-lvl-button'}
+                            onClick={this.nextLvlButtonClick}
+                        >
+                            {nextLvlButton.name}
+                        </button>
+                    </div>
+                    <audio src={winSound} className='correct-sound'></audio>
+                    <audio src={loseSound} className='incorrect-sound'></audio>
                 </div>
-                <audio src={winSound} className='correct-sound'></audio>
-                <audio src={loseSound} className='incorrect-sound'></audio>
-            </div>
-        );
+            );   
+        } else {
+            return (
+                <div className="wrapper">
+                    <Header
+                        activeList={activeList}
+                        counter={score}
+                    />
+                    <GameEndBlock score={score} onRepeatButton={this.repeatButtonAction} />
+                </div>
+            );
+        }
     }
 } 
 

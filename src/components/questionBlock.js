@@ -6,22 +6,19 @@ import AudioPlayer from '../components/audioPlayer';
 export default class QuestionBlock extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            imageWay: questionBlockContent.defaultImageWay,
-            birdTitle: questionBlockContent.misteryText,
-        }
     }
 
     render() {
+        const {clickStatus, activeList, correctBirdIndex} = this.props;
+
         return (
             <div className="question-block">
                 <div className="question-block_image-block">
-                    <img src={this.props.clickStatus ? birdsData[this.props.activeList][this.props.correctBirdIndex].image : this.state.imageWay} className="random-bird"/>     
+                    <img src={clickStatus ? birdsData[activeList][correctBirdIndex].image : questionBlockContent.defaultImageWay} className="random-bird"/>     
                 </div>
                 <div className="question-block_description">
-                    <p className="question-block-bird-name">{this.props.clickStatus ? birdsData[this.props.activeList][this.props.correctBirdIndex].name : this.state.birdTitle}</p>
-                    <AudioPlayer audio={birdsData[this.props.activeList][this.props.correctBirdIndex].audio} />
+                    <p className="question-block-bird-name">{clickStatus ? birdsData[activeList][correctBirdIndex].name : questionBlockContent.misteryText}</p>
+                    <AudioPlayer audio={birdsData[activeList][correctBirdIndex].audio} />
                 </div>      
             </div>
         );

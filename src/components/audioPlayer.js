@@ -16,9 +16,16 @@ export default class AudioPlayer extends React.Component {
         }
     }
 
-    componentDidUpdate() {
-        const audio = document.querySelector('.audio_question-block');
-        console.log(audio);
+    componentDidUpdate(prevProps) {
+        if (this.props.audio !== prevProps.audio) {
+            clearInterval(this.tinterval);
+            this.setState({
+                startTime: audioConstants.zeroTime,
+                endTime: audioConstants.zeroTime,
+                sliderValue: 0,
+                iconState: audioConstants.iconStart,
+            });
+        }
     }
 
     converTime(sec) {
@@ -34,7 +41,6 @@ export default class AudioPlayer extends React.Component {
     }
 
     playButtonAction(event) {
-        let tinterval;
         const durationTime = Math.round(this.refs.player.duration);
         this.refs.slider.max = durationTime;
         this.setState({endTime: this.converTime(durationTime)});
@@ -42,11 +48,11 @@ export default class AudioPlayer extends React.Component {
         if (event.target.classList.contains('fa-play')) {
             this.refs.player.play();
             this.setState({iconState: audioConstants.iconPause});
-            tinterval = setInterval(() => {this.changeSliderAndCurrentTime();}, 1000);
+            this.tinterval = setInterval(() => {this.changeSliderAndCurrentTime();}, 1000);
         } else {
             this.refs.player.pause();
             this.setState({iconState: audioConstants.iconStart});
-            clearInterval(tinterval);
+            clearInterval(this.tinterval);
         }
     }
 
@@ -64,7 +70,6 @@ export default class AudioPlayer extends React.Component {
     }
 
     render() {
-        //разобраться с аудио
         return (
             <div className="audio">
                 <audio ref="player" className="audio_question-block" src={this.props.audio}></audio>

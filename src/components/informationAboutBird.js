@@ -19,9 +19,6 @@ export default class InformationAboutBird extends React.Component {
         const birdInformationStyle = {
             display: activeBirdStatus ? 'flex' : 'none',
         }
-        //Доделать блок с изображением птицы, разобрать с индексом последней птицы
-        //Разработать логику игры
-        //Добавить окошко конца игры
 
         return (
             <div className="bird-box">
