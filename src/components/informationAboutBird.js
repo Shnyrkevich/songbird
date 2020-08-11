@@ -10,7 +10,7 @@ export default class InformationAboutBird extends React.Component {
     }
 
     render() {
-        const {activeBirdStatus, activeList, birdIndex} = this.props;
+        const {activeBirdStatus, activeList, birdIndex, clickStatus} = this.props;
 
         const defaultTextStyle = {
             display: !activeBirdStatus ? 'block' : 'none',
@@ -30,7 +30,10 @@ export default class InformationAboutBird extends React.Component {
                     <div className="bird-information_container">
                         <p className="bird-information_container-name">{birdDate[activeList][birdIndex - 1].name}</p>
                         <p className="bird-information_container-species">{birdDate[activeList][birdIndex - 1].species}</p>
-                        <AudioPlayer audio={birdDate[activeList][birdIndex - 1].audio} />
+                        <AudioPlayer
+                            audio={birdDate[activeList][birdIndex - 1].audio}
+                            stopAudio={clickStatus}
+                        />
                     </div>
                     <p className="bird-information_full-description">{birdDate[activeList][birdIndex - 1].description}</p>
                 </div>

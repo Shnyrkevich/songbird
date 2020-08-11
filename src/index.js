@@ -63,7 +63,7 @@ class App extends React.Component {
                 }
             );
         }
-        console.log('Active', this.state.activeList)
+        
         this.setState((prevState) => ({
             clickOnBird: false,
             correctAnswer: false,
@@ -115,7 +115,10 @@ class App extends React.Component {
     audioEffect(status) {
         const successAudio = document.querySelector('.correct-sound');
         const failAudio = document.querySelector('.incorrect-sound');
+        const questionAudio = document.querySelector('.audio_question-block');
         if (status) {
+            questionAudio.currentTime = 0;
+            questionAudio.pause();
             successAudio.currentTime = 0;
             successAudio.play();
         } else {
@@ -149,9 +152,10 @@ class App extends React.Component {
                             activeBirdStatus={clickOnBird}
                             activeList={activeList}
                             birdIndex={activeBirdIndex}
+                            clickStatus={correctAnswer}
                         />
                         <button
-                            className={!this.state.correctAnswer ? 'next-lvl-button disactive' : 'next-lvl-button'}
+                            className={!this.state.correctAnswer ? 'next-lvl-button disactive' : 'next-lvl-button active'}
                             onClick={this.nextLvlButtonClick}
                         >
                             {nextLvlButton.name}

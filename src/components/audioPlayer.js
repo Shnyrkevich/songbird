@@ -25,6 +25,7 @@ export default class AudioPlayer extends React.Component {
                 sliderValue: 0,
                 iconState: audioConstants.iconStart,
             });
+            this.refs.slider.style.background = `-webkit-linear-gradient(left, black 0%, black 0%, white 0%, white 100%)`;
         }
     }
 
@@ -38,6 +39,14 @@ export default class AudioPlayer extends React.Component {
 
     sliderChange(time) {
         this.setState({sliderValue: time});
+        const backgroundLineValue = (time * 100) / this.refs.slider.max;
+        this.refs.slider.style.background = `-webkit-linear-gradient(left, black 0%, black ${backgroundLineValue}%, white ${backgroundLineValue}%, white 100%)`;
+
+        if (this.props.stopAudio) {
+            this.refs.player.pause();
+            this.setState({iconState: audioConstants.iconStart});
+            clearInterval(this.tinterval);
+        }
     }
 
     playButtonAction(event) {
@@ -77,7 +86,15 @@ export default class AudioPlayer extends React.Component {
                     <i className={`fas fa-${this.state.iconState}`}></i>
                 </div>
                 <div className="audio-slider">
-                    <input ref="slider" type="range" className="audio-slider_liner" min="0" step="1" value={this.state.sliderValue} onChange={this.sliderChange}/>
+                    <input 
+                        ref="slider"
+                        type="range"
+                        className="audio-slider_liner"
+                        min="0"
+                        step="1"
+                        value={this.state.sliderValue}
+                        onChange={this.sliderChange}
+                    />
                     <div className="audio-slider_times">
                         <div className="stat-time">{this.state.startTime}</div>
                         <div className="end-time">{this.state.endTime}</div>

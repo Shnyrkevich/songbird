@@ -10,7 +10,7 @@ export default class QuestionBlock extends React.Component {
 
     render() {
         const {clickStatus, activeList, correctBirdIndex} = this.props;
-
+        
         return (
             <div className="question-block">
                 <div className="question-block_image-block">
@@ -18,7 +18,10 @@ export default class QuestionBlock extends React.Component {
                 </div>
                 <div className="question-block_description">
                     <p className="question-block-bird-name">{clickStatus ? birdsData[activeList][correctBirdIndex].name : questionBlockContent.misteryText}</p>
-                    <AudioPlayer audio={birdsData[activeList][correctBirdIndex].audio} />
+                    <AudioPlayer
+                        audio={birdsData[activeList][correctBirdIndex].audio}
+                        stopAudio={clickStatus}
+                    />
                 </div>      
             </div>
         );

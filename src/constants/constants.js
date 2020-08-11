@@ -37,12 +37,13 @@ const birdDescriptionBlock = {
 
 const gameEndBlock = {
     hightScore: 30,
-    congratulations: 'Поздравляем!!!',
+    congratulations: 'Поздравляем',
     scoreInformation: (score) => `Вы прошли викторину и набрали ${score} из 30 возможных баллов`,
     repeatButtonName: 'Попробовать еще раз',
-    winCongratulations: 'ХЭЙ!!!',
+    winCongratulations: 'ХЭЙ',
     winInformation: 'Вы выйграли и набрали максимальный балл',
-    winJoke: 'Вы точно не друид?'
+    winJoke: 'Вы точно не друид?',
+    winImageWay: './src/assets/images/win-image.jpg',
 }
 
 export {
