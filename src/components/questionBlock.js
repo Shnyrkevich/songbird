@@ -1,6 +1,6 @@
 import React from 'react';
 import { questionBlockContent } from '../constants/constants';
-import birdsData from '../constants/bidrds';
+import birdsData from '../data/bidrds';
 import AudioPlayer from '../components/audioPlayer';
 import defaultBird from '../assets/images/random-bird.jpg';
 

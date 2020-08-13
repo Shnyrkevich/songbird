@@ -1,5 +1,5 @@
 import React from 'react';
-import birdsData from '../constants/bidrds';
+import birdsData from '../data/bidrds';
 
 export default class ListOfAnswers extends React.Component{
     constructor(props) {

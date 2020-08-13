@@ -1,5 +1,6 @@
 import React from 'react';
 import {headerContent} from '../constants/constants';
+import logoImg from '../assets/images/SongBird.png';
 
 export default class Header extends React.Component {
     componentDidUpdate() {
@@ -10,9 +11,11 @@ export default class Header extends React.Component {
 
     render() {
         return (
-            <div className="header">
+            <header className="header">
                 <div className="header_information">
-                    <div className="header_information-logo">{headerContent.logo}</div>
+                    <div className="header_information-logo">
+                        <img src={logoImg} className="header_information-image"/>
+                    </div>
                     <div className="header_information-score">{`${headerContent.scroe} : ${this.props.counter}`}</div>
                 </div>
                 <ul className="header_navigation">
@@ -20,7 +23,7 @@ export default class Header extends React.Component {
                         headerContent.navigationNames.map((el, index) => <li key={index} className="navigation-link">{el}</li>)
                     }
                 </ul>
-            </div>
+            </header>
         );
     }
 }

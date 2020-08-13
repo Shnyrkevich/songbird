@@ -1,6 +1,6 @@
 import React from 'react';
 import { birdDescriptionBlock } from '../constants/constants';
-import birdDate from '../constants/bidrds';
+import birdDate from '../data/bidrds';
 import AudioPlayer from './audioPlayer';
 
 export default class InformationAboutBird extends React.Component {

@@ -90,7 +90,7 @@ class App extends React.Component {
 
         const status = bird.classList.contains('correct-bird') ? true : false;
         
-        if (!bird.classList.contains('correct-answer') || !bird.classList.contains('incorrect-answer')) {
+        if (!bird.classList.contains('correct-answer') && !bird.classList.contains('incorrect-answer') && !this.state.correctAnswer) {
             this.audioEffect(status);
         }
 
