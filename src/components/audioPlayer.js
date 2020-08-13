@@ -7,12 +7,17 @@ export default class AudioPlayer extends React.Component {
 
         this.playButtonAction = this.playButtonAction.bind(this);
         this.sliderChange = this.sliderChange.bind(this);
+        this.volumeChange = this.volumeChange.bind(this);
+
+        this.interaptedAudio = false;
 
         this.state = {
             startTime: audioConstants.zeroTime,
             endTime: audioConstants.zeroTime,
             sliderValue: 0,
+            volumeValue: 1,
             iconState: audioConstants.iconStart,
+            iconVolumeState: audioConstants.iconVolumeUp,
         }
     }
 
@@ -25,6 +30,7 @@ export default class AudioPlayer extends React.Component {
                 sliderValue: 0,
                 iconState: audioConstants.iconStart,
             });
+            this.interaptedAudio = this.props.stopAudio ? true : false;
             this.refs.slider.style.background = `-webkit-linear-gradient(left, black 0%, black 0%, white 0%, white 100%)`;
         }
     }
@@ -37,12 +43,17 @@ export default class AudioPlayer extends React.Component {
         return minutes + ':' + seconds;
     }
 
+    changeRangeBackground(input, value, maxRange) {
+        const backgroundLineValue = (value * 100) / maxRange;
+        input.style.background = `-webkit-linear-gradient(left, black 0%, black ${backgroundLineValue}%, white ${backgroundLineValue}%, white 100%)`;
+    }
+
     sliderChange(time) {
         this.setState({sliderValue: time});
-        const backgroundLineValue = (time * 100) / this.refs.slider.max;
-        this.refs.slider.style.background = `-webkit-linear-gradient(left, black 0%, black ${backgroundLineValue}%, white ${backgroundLineValue}%, white 100%)`;
-
-        if (this.props.stopAudio) {
+        this.changeRangeBackground(this.refs.slider, time, this.refs.slider.max);
+    
+        if (this.props.stopAudio && !this.interaptedAudio) {
+            this.interaptedAudio = true;
             this.refs.player.pause();
             this.setState({iconState: audioConstants.iconStart});
             clearInterval(this.tinterval);
@@ -78,6 +89,25 @@ export default class AudioPlayer extends React.Component {
         this.setState({startTime: curTime});
     }
 
+    volumeChange(event) {
+        this.refs.player.volume = event.target.value;
+        this.setState({
+            volumeValue: event.target.value,
+        });
+
+        this.changeRangeBackground(this.refs.volume, event.target.value, this.refs.volume.max);
+
+        if (event.target.value < 0.01) {
+            this.setState({
+                iconVolumeState: audioConstants.iconVolumeOff
+            });
+        } else {
+            this.setState({
+                iconVolumeState: audioConstants.iconVolumeUp,
+            });
+        }
+    }
+
     render() {
         return (
             <div className="audio">
@@ -98,6 +128,19 @@ export default class AudioPlayer extends React.Component {
                     <div className="audio-slider_times">
                         <div className="stat-time">{this.state.startTime}</div>
                         <div className="end-time">{this.state.endTime}</div>
+                        <div className="audio-slider_volume">
+                            <i className={`fas fa-${this.state.iconVolumeState}`}></i>
+                            <input 
+                                ref="volume"
+                                type="range"
+                                className="audio-slider_volume-line"
+                                min="0"
+                                max="1"
+                                step='any'
+                                value={this.state.volumeValue}
+                                onChange={this.volumeChange}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

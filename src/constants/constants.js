@@ -13,13 +13,14 @@ const headerContent = {
 
 const questionBlockContent = {
     misteryText: "*****",
-    defaultImageWay: './src/assets/images/random-bird.jpg',
 }
 
 const audioConstants = {
     zeroTime: '00:00',
     iconStart: "play",
     iconPause: "pause",
+    iconVolumeUp: 'volume-up',
+    iconVolumeOff: 'volume-off',
 }
 
 const nextLvlButton = {
@@ -41,9 +42,8 @@ const gameEndBlock = {
     scoreInformation: (score) => `Вы прошли викторину и набрали ${score} из 30 возможных баллов`,
     repeatButtonName: 'Попробовать еще раз',
     winCongratulations: 'ХЭЙ',
-    winInformation: 'Вы выйграли и набрали максимальный балл',
+    winInformation: 'Вы выйграли и набрали максимальный балл!!!',
     winJoke: 'Вы точно не друид?',
-    winImageWay: './src/assets/images/win-image.jpg',
 }
 
 export {

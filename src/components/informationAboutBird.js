@@ -4,11 +4,6 @@ import birdDate from '../constants/bidrds';
 import AudioPlayer from './audioPlayer';
 
 export default class InformationAboutBird extends React.Component {
-    constructor(props) {
-        super(props);
-    
-    }
-
     render() {
         const {activeBirdStatus, activeList, birdIndex, clickStatus} = this.props;
 

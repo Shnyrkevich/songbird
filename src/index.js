@@ -87,22 +87,25 @@ class App extends React.Component {
             clickOnBird: true,
             activeBirdIndex: bird.value,
         });
+
         const status = bird.classList.contains('correct-bird') ? true : false;
         
+        if (!bird.classList.contains('correct-answer') || !bird.classList.contains('incorrect-answer')) {
+            this.audioEffect(status);
+        }
+
         if (bird.value - 1 === this.state.birdIndex && !this.state.correctAnswer) {
             bird.classList.add('correct-answer');
             this.setState((prevState) => ({
                 correctAnswer: true,
                 score: prevState.score + appConstants.hightestScoreForLvl + prevState.finePoint,
             }));
-            this.audioEffect(status);
         } else if (bird.value - 1 !== this.state.birdIndex && !this.state.correctAnswer) {
             bird.classList.add('incorrect-answer');
             this.setState((prevState) => ({
                 finePoint: prevState.finePoint - 1,
             }));
-            this.audioEffect(status);
-        } 
+        }
     }
 
     repeatButtonAction() {

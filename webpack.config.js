@@ -26,7 +26,7 @@ module.exports = {
         extensions: [
             '.js',
             '.jsx'
-        ]
+        ],
     },
     module: {
         rules: [
@@ -40,23 +40,25 @@ module.exports = {
                 use: ['style-loader', 'css-loader']
             },
             {
-                test: /\.(png|jpg|gif)$/i,
-                use: [
-                    {
-                        loader: 'url-loader',
-                        options: {
-                        limit: 8192,
-                        },
-                    },
-                ]
+                test: /\.(png|jpeg|gif|svg|jpg)$/,
+                loader: 'file-loader',
+                options: {
+                  name: 'assets/img/[name].[ext]',
+                },
             },
             {
-                test: /\.(png|jpeg|gif|svg|jpg|mp3)$/,
-                use: ['file-loader']
+                test: /\.(mp3)$/,
+                loader: 'file-loader',
+                options: {
+                  name: 'assets/aud/[name].[ext]',
+                },
             },
             {
-                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-                use: ['file-loader']
+                test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'file-loader',
+                options: {
+                  name: 'assets/fonts/[name].[ext]',
+                },
             }
         ]
     }
