@@ -21,6 +21,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    border: 2px solid #9999FF;
 }
 
 .header_information {
@@ -69,7 +70,7 @@
     display: block;
     padding: 0;
     width: 16.6%;
-    min-width: 115px;
+    min-width: 150px;
     text-align: center;
     font-size: 1.7rem;
 }
@@ -289,6 +290,7 @@
     min-width: 250px;
     max-height: 120px;
     margin-bottom: 5px;
+    margin-left: 15px;
 }
 
 .bird-information_container-name {
@@ -303,7 +305,7 @@
 
 .bird-information_full-description {
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     text-align: justify;
     margin-bottom: 10px;
 }
@@ -332,6 +334,7 @@
     font-size: 4rem;
     margin-bottom: 20px;
     line-height: 7rem;
+    text-align: center;
 }
 
 .game-end-block_score-information {
@@ -416,6 +419,10 @@
     .question-block_description {
         width: 60%;
     }
+
+    .bird-information_container {
+        margin-left: auto;
+    }
 }
 
 @media (max-width: 760px) {
@@ -442,5 +449,9 @@
 @media (max-width: 375px) {
     .header_information-score {
         font-size: 2rem;
+    }
+
+    .navigation-link {
+        width: 100%;
     }
 }
