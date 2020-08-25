@@ -1,0 +1,457 @@
+* {
+    margin: 0 auto;
+    font-size: 10px;
+}
+
+.wrapper {
+    width: 100vw;
+    min-height: 100vh;
+    background: rgb(255, 255, 255);
+}
+
+.header, .question-block, .game-container {
+    width: 80%;
+    margin-bottom: 1.5vh;
+}
+
+.question-block {
+    background-color: #9999FF;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #9999FF;
+}
+
+.header_information {
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_information-logo {
+    margin: 0;
+    height: 100%;
+    width: 170px;
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+}
+
+.header_information-image {
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.header_information-score {
+    margin: 0;
+    text-align: right;
+    line-height: 3rem;
+    font-size: 3rem;
+}
+
+.header_navigation {
+    background: inherit;
+    min-height: 35px;
+    padding: 0;
+    width: 100%;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid black;
+}
+
+.navigation-link {
+    height: 35px;
+    line-height: 3.5rem;
+    display: block;
+    padding: 0;
+    width: 16.6%;
+    min-width: 150px;
+    text-align: center;
+    font-size: 1.7rem;
+}
+
+.active-link {
+    background-color: #9999FF;
+}
+
+.question-block_image-block {
+    margin: 10px;
+    width: 170px;
+    height: 145px;
+}
+
+.random-bird {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-size: contain;
+}
+
+.question-block_description {
+    margin-left: 10px;
+    width: 80%;
+    min-width: 200px;
+    margin-bottom: 10px;
+}
+
+.question-block-bird-name {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.audio {
+    display: flex;
+    align-items: center;
+}
+
+.audio-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    margin-left: 0;
+    margin-top: 0;
+    width: 30px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.audio-button i {
+    font-size: 1.3rem;
+}
+
+.audio-slider {
+    margin: 0;
+    min-width: 150px;
+    width: 100%;
+}
+
+.audio-slider_liner {
+    width: 100%;
+    background: -webkit-linear-gradient(left, black 0%, black 0%, white 0%, white 100%);
+}
+
+.audio-slider_liner, .audio-slider_volume-line {
+    -webkit-appearance: none;
+    height: 4px;
+    border-radius: 2px;
+    outline: none;
+    border: 0.5px solid black;
+}
+
+.audio-slider_volume-line {
+    background: -webkit-linear-gradient(left, black 0%, black 100%, white 100%, white 100%);
+}
+
+.audio-slider_liner::-webkit-slider-thumb,
+.audio-slider_volume-line::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background-color: #00FF99;
+    border: 1px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+}
+
+.audio-slider_times {
+    position: relative;
+    width: 100%;
+    height: 34px;
+}
+
+.audio-slider_volume {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+}
+
+.audio-slider_volume i {
+    display: block;
+    font-size: 1.6rem;
+    margin-right: 5px;
+    width: 16px;
+}
+
+.stat-time, .end-time {
+    position: absolute;
+    font-size: 1.5rem;
+}
+
+.stat-time {
+    left: 0;
+    top: 0;
+}
+
+.end-time {
+    right: 0;
+    top: 0;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 1vh;
+}
+
+.answers-list, .bird-box  {
+    background-color: inherit;
+    width: 49%;
+    min-width: 300px;
+    margin-bottom: 1vh;
+    margin-top: 1vh;
+    border: 2px solid black;
+}
+
+.answers-list {
+    padding: 0;
+    list-style: none;
+    max-height: 246px;
+}
+
+.answers-list_component {
+    height: 40px;
+    line-height: 4rem;
+    text-align: center;
+    font-size: 1.7rem;
+    vertical-align: middle;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.answers-list_component:hover {
+    font-size: 2.5rem;
+}
+
+.answers-list_component:last-child {
+    border-bottom: none;
+}
+
+.next-lvl-button {
+    background-color: #9999FF;
+    height: 35px;
+    width: 99.5%;
+    outline: none;
+    cursor: pointer;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    margin-top: 1.5vh;
+    border: 2px solid black;
+    z-index: 1;
+    transition: all .5s;
+}
+
+.active:hover {
+    background: inherit;
+    color: #515179;
+    border-color: #9999FF;
+}
+
+.disactive {
+    opacity: 0.5;
+    background-color: inherit;
+}
+
+.bird-box  {
+    min-height: 240px;
+    display: flex;
+}
+
+.bird-box_default-text {
+    padding: 10px;
+    margin-left: 0;
+    font-size: 1.8rem;
+}
+
+.bird-information {
+    width: 95%;
+    height: 95%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.bird-information_container {
+    min-width: 250px;
+    max-height: 120px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+}
+
+.bird-information_container-name {
+    font-size: 2rem;
+    margin-bottom: 7px;
+}
+
+.bird-information_container-species {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.bird-information_full-description {
+    width: 100%;
+    font-size: 1.7rem;
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+.correct-answer {
+    background-color: #00FF99;
+}
+
+.incorrect-answer {
+    background-color: #FF6666;
+}
+
+.game-end-block {
+    width: 80%;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: inherit;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.game-end-block_congrat {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    line-height: 7rem;
+    text-align: center;
+}
+
+.game-end-block_score-information {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.game-end-block_repeat-button {
+    padding: 0;
+    position: relative;
+    border: none;
+    background: none;
+    width: 200px;
+    height: 50px;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 20px;
+    transition: all 500ms cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 0; 
+}
+
+.game-end-block_repeat-button:before,
+.game-end-block_repeat-button:after {
+    content: '';
+    padding: 0;
+    position: absolute; 
+    transition: inherit;
+    left: 0;
+    height: 0;
+    width: 100%;
+    z-index: -1;
+    color: black;
+}
+
+.game-end-block_repeat-button:hover {
+    color: white;
+    transition-delay: .5s;
+}
+
+.game-end-block_repeat-button:hover:before {
+    transition-delay: 0s;
+    height: 100%;
+    border-color: #9999FF;
+}
+
+.game-end-block_repeat-button:hover:after {
+    background-color: #9999FF; 
+    transition-delay: .35s;
+    height: 100%;
+}
+
+.game-end-block_repeat-button:before {
+    bottom: 0;  
+    border: 2px solid black;
+    border-top: 0;
+}
+
+.game-end-block_repeat-button:after {
+    top: -2px;
+    height: 0;
+    left: 1.5px;
+}
+
+.game-end-block_image-container {
+    margin-top: -20px;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 10px;
+}
+
+.game-end-block_image {
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 1250px) {
+    .question-block_description {
+        width: 60%;
+    }
+
+    .bird-information_container {
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 760px) {
+    .question-block_description {
+        width: 90%;
+        margin-left: auto;
+    }
+
+    .question-block-bird-name {
+        margin-bottom: 10px;
+    }
+
+    .bird-information_container-name,
+    .bird-information_container-species,
+    .question-block-bird-name {
+        text-align: center;
+    }
+
+    .answers-list, .bird-box {
+        width: 100%;
+    }
+}
+
+@media (max-width: 375px) {
+    .header_information-score {
+        font-size: 2rem;
+    }
+
+    .navigation-link {
+        width: 100%;
+    }
+}
